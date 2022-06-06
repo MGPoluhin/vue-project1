@@ -1,6 +1,10 @@
 <template>
   <div class="app">
     <h1>Страница с постами</h1>
+    <my-input
+      v-model="searchQuery"
+
+    />
     <div class="app__btns">
       <my-button
           @click="showDialog"
@@ -36,8 +40,10 @@ import MyDialog from "@/components/UI/MyDialog";
 import MyButton from "@/components/UI/MyButton";
 import axios from 'axios';
 import MySelect from "@/components/UI/MySelect";
+import MyInput from "@/components/UI/MyInput";
 export default {
   components: {
+    MyInput,
     MySelect,
     MyButton,
     MyDialog,
@@ -47,12 +53,13 @@ export default {
   data(){
     return{
       posts: [],
+      searchQuery: '',
       dialogVisible: false,
       isPostLoading: false,
       selectedSort: '',
       sortOptions: [
         {value: 'title', name: 'По названию'},
-        {value: 'body', name: 'По описанию'},
+        {value: 'body', name: 'По описанию'}
       ]
     }
   },
